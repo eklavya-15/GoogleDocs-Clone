@@ -9,7 +9,7 @@ import { io } from "socket.io-client"
 import "./styles.css";
 import { useParams } from "react-router-dom"
 
-const SAVE_INTERVAL_MS = 2000
+const SAVE_INTERVAL_MS = 1000
 const TOOLBAR_OPTIONS = [
   [{ header: [1, 2, 3, 4, 5, 6, false] }],
   [{ font: [] }],
@@ -28,7 +28,9 @@ export default function TextEditor() {
   const [quill, setQuill] = useState()
 
   useEffect(() => {
-    const s = io("http://localhost:3001")
+    // const serverUrl = window.location.origin;
+    //  const s = io(serverUrl);
+    const s = io("/")
     setSocket(s)
 
     return () => {
